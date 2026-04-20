@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Julia & Maxi – 12. Juli 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --cream:   #FAF7F2;
+  --sand:    #E8DDD0;
+  --blush:   #D4A99A;
+  --rose:    #B97A6D;
+  --deep:    #3C2E2B;
+  --mid:     #6B4F47;
+  --gold:    #C9A96E;
+  --white:   #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--deep);
+  overflow-x: hidden;
+}
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: center; gap: 2.5rem;
+  padding: 1.2rem 2rem;
+  background: rgba(250,247,242,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--sand);
+}
+nav a {
+  font-family: 'Jost', sans-serif;
+  font-size: .78rem; font-weight: 500; letter-spacing: .12em;
+  text-transform: uppercase; text-decoration: none;
+  color: var(--mid); transition: color .25s;
+}
+nav a:hover { color: var(--rose); }
+
+#hero {
+  min-height: 100svh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212,169,154,.22) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 10% 80%, rgba(201,169,110,.12) 0%, transparent 60%),
+    var(--cream);
+}
+.hero-ring {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(212,169,154,.35);
+  animation: pulse 6s ease-in-out infinite;
+}
+.hero-ring:nth-child(1){ width:420px;height:420px; top:50%;left:50%; transform:translate(-50%,-50%); animation-delay:0s; }
+.hero-ring:nth-child(2){ width:620px;height:620px; top:50%;left:50%; transform:translate(-50%,-50%); animation-delay:1s; border-color:rgba(201,169,110,.18);}
+.hero-ring:nth-child(3){ width:820px;height:820px; top:50%;left:50%; transform:translate(-50%,-50%); animation-delay:2s; border-color:rgba(212,169,154,.12);}
+@keyframes pulse {
+  0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1);}
+  50%{opacity:.8;transform:translate(-50%,-50%) scale(1.02);}
+}
+
+.hero-content { position: relative; z-index: 1; }
+.hero-label {
+  font-size:.72rem; letter-spacing:.22em; text-transform:uppercase;
+  color: var(--gold); margin-bottom: 1.2rem;
+  animation: fadeUp .9s ease both;
+}
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 12vw, 9rem);
+  font-weight: 300; line-height: 1;
+  color: var(--deep);
+  animation: fadeUp .9s .15s ease both;
+}
+h1 em { font-style: italic; color: var(--rose); }
+.hero-ampersand {
+  display: block;
+  font-size: clamp(3rem, 9vw, 7rem);
+  color: var(--gold); line-height: 1;
+}
+.hero-date {
+  margin-top: 1.8rem;
+  font-size: .85rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--mid);
+  animation: fadeUp .9s .3s ease both;
+}
+.hero-photo {
+  position: relative; margin-top: 3rem;
+  width: min(340px, 88vw); height: 420px;
+  animation: fadeUp .9s .45s ease both;
+}
+.photo-placeholder {
+  width: 100%; height: 100%;
+  background: linear-gradient(145deg, var(--sand) 0%, var(--blush) 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: .5rem;
+  color: var(--white); font-size: .8rem; letter-spacing: .1em;
+}
+.photo-placeholder svg { opacity: .65; }
+.photo-placeholder span { opacity: .8; }
+
+.scroll-hint {
+  margin-top: 3rem; display: flex; flex-direction: column;
+  align-items: center; gap: .5rem; color: var(--mid);
+  font-size: .72rem; letter-spacing: .15em; text-transform: uppercase;
+  animation: fadeUp .9s .6s ease both;
+}
+.scroll-line {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, var(--blush), transparent);
+  animation: scrollDown 2s ease-in-out infinite;
+}
+@keyframes scrollDown {
+  0%{transform:scaleY(0);transform-origin:top;}
+  50%{transform:scaleY(1);transform-origin:top;}
+  51%{transform:scaleY(1);transform-origin:bottom;}
+  100%{transform:scaleY(0);transform-origin:bottom;}
+}
+@keyframes fadeUp {
+  from{opacity:0;transform:translateY(28px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+section { padding: 6rem 2rem; }
+.section-inner { max-width: 900px; margin: 0 auto; }
+.section-tag {
+  font-size: .72rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: .8rem;
+}
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 300; line-height: 1.1;
+  margin-bottom: 1.4rem;
+}
+h2 em { font-style: italic; color: var(--rose); }
+.lead {
+  font-size: 1.05rem; line-height: 1.85;
+  color: var(--mid); max-width: 600px;
+}
+.divider {
+  width: 60px; height: 1px;
+  background: var(--gold); margin: 2rem 0;
+}
+
+#story { background: var(--white); }
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem; align-items: center;
+  margin-top: 3rem;
+}
+@media(max-width:640px){ .story-grid{grid-template-columns:1fr;} }
+.story-photo {
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--sand) 0%, var(--blush) 100%);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: .6rem; color: rgba(255,255,255,.8);
+  font-size: .78rem; letter-spacing: .1em;
+}
+.story-text p {
+  font-size: 1rem; line-height: 1.9; color: var(--mid);
+  margin-bottom: 1rem;
+}
+
+#ablauf { background: var(--cream); }
+.timeline {
+  margin-top: 3rem;
+  display: flex; flex-direction: column; gap: 0;
+}
+.tl-item {
+  display: grid;
+  grid-template-columns: 90px 1px 1fr;
+  gap: 0 1.5rem;
+  align-items: stretch;
+}
+.tl-time {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 300; font-style: italic;
+  color: var(--gold); text-align: right; padding-top: 2px;
+}
+.tl-line {
+  display: flex; flex-direction: column; align-items: center;
+  position: relative;
+}
+.tl-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--rose); flex-shrink: 0; margin-top: 5px;
+}
+.tl-bar {
+  flex: 1; width: 1px;
+  background: var(--sand);
+  margin-top: 4px;
+}
+.tl-item:last-child .tl-bar { display: none; }
+.tl-body { padding-bottom: 2.2rem; }
+.tl-body h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 400; margin-bottom: .3rem;
+}
+.tl-body p { font-size: .9rem; color: var(--mid); line-height: 1.6; }
+
+#location { background: var(--deep); color: var(--cream); }
+#location h2 { color: var(--cream); }
+#location .section-tag { color: var(--gold); }
+#location .lead { color: var(--sand); }
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem; margin-top: 3rem;
+}
+@media(max-width:640px){ .location-grid{grid-template-columns:1fr;} }
+.loc-card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 2px; padding: 2rem;
+}
+.loc-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 400; color: var(--gold);
+  margin-bottom: .8rem;
+}
+.loc-card p { font-size: .9rem; line-height: 1.75; color: var(--sand); }
+.map-placeholder {
+  margin-top: 2.5rem; width: 100%; height: 280px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: .8rem;
+  color: rgba(255,255,255,.35); font-size: .8rem; letter-spacing: .1em;
+}
+
+#fotos { background: var(--white); }
+.photo-mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 240px 240px;
+  gap: 1rem; margin-top: 3rem;
+}
+@media(max-width:600px){
+  .photo-mosaic{grid-template-columns:1fr 1fr; grid-template-rows:160px 160px 160px;}
+}
+.mosaic-item {
+  background: linear-gradient(135deg, var(--sand) 0%, var(--blush) 100%);
+  border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: .5rem;
+  color: rgba(255,255,255,.7); font-size: .75rem; letter-spacing: .1em;
+  overflow: hidden;
+}
+.mosaic-item:nth-child(1){ grid-column: 1; grid-row: 1 / 3; background: linear-gradient(160deg,#c9a96e 0%,#d4a99a 100%); }
+.mosaic-item:nth-child(4){ grid-column: 3; grid-row: 1 / 3; background: linear-gradient(160deg,#b97a6d 0%,#6b4f47 100%); }
+
+#rsvp {
+  background: linear-gradient(160deg, var(--sand) 0%, var(--cream) 100%);
+}
+.rsvp-card {
+  max-width: 620px; margin: 3rem auto 0;
+  background: var(--white);
+  border: 1px solid var(--sand);
+  border-radius: 2px; padding: 3rem;
+  box-shadow: 0 20px 60px rgba(60,46,43,.07);
+}
+.form-group { margin-bottom: 1.6rem; }
+label {
+  display: block;
+  font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--mid); margin-bottom: .5rem;
+}
+input[type="text"], input[type="email"], input[type="number"], select, textarea {
+  width: 100%; padding: .85rem 1rem;
+  background: var(--cream);
+  border: 1px solid var(--sand);
+  border-radius: 1px;
+  font-family: 'Jost', sans-serif; font-size: .95rem; color: var(--deep);
+  outline: none; transition: border-color .25s;
+  appearance: none;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--rose); }
+textarea { resize: vertical; min-height: 100px; }
+
+.radio-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .4rem; }
+.radio-option { flex: 1; min-width: 120px; cursor: pointer; }
+.radio-option input { display: none; }
+.radio-btn {
+  display: block; text-align: center;
+  padding: .75rem 1rem;
+  border: 1px solid var(--sand); border-radius: 1px;
+  font-size: .88rem; color: var(--mid);
+  transition: all .2s;
+}
+.radio-option input:checked + .radio-btn {
+  background: var(--rose); border-color: var(--rose);
+  color: var(--white);
+}
+.radio-btn:hover { border-color: var(--rose); }
+
+.btn-submit {
+  width: 100%; padding: 1rem;
+  background: var(--deep); color: var(--cream);
+  border: none; border-radius: 1px;
+  font-family: 'Jost', sans-serif;
+  font-size: .82rem; letter-spacing: .18em; text-transform: uppercase;
+  cursor: pointer; transition: background .25s;
+}
+.btn-submit:hover { background: var(--rose); }
+
+.form-success {
+  display: none; text-align: center; padding: 2rem 0;
+}
+.form-success .check { font-size: 3rem; margin-bottom: 1rem; }
+.form-success h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 300; color: var(--rose);
+}
+.form-success p { color: var(--mid); margin-top: .5rem; }
+
+#dresscode { background: var(--white); }
+.dc-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1.5rem; margin-top: 3rem;
+}
+@media(max-width:640px){ .dc-grid{grid-template-columns:1fr;} }
+.dc-card {
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--sand);
+  border-radius: 2px; text-align: center;
+}
+.dc-swatch {
+  width: 52px; height: 52px; border-radius: 50%;
+  margin: 0 auto 1rem;
+}
+.dc-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; margin-bottom: .4rem;
+}
+.dc-card p { font-size: .85rem; color: var(--mid); line-height: 1.6; }
+
+footer {
+  background: var(--deep); color: var(--sand);
+  text-align: center; padding: 4rem 2rem;
+}
+footer .foot-names {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 300; font-style: italic;
+  color: var(--blush); margin-bottom: 1rem;
+}
+footer p { font-size: .82rem; letter-spacing: .1em; color: var(--mid); }
+
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.reveal.visible {
+  opacity: 1; transform: translateY(0);
+}
+```
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#story">Unsere Geschichte</a>
+  <a href="#ablauf">Ablauf</a>
+  <a href="#location">Location</a>
+  <a href="#rsvp">Zusagen</a>
+  <a href="#dresscode">Dresscode</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-ring"></div>
+    <div class="hero-ring"></div>
+    <div class="hero-ring"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-label">Wir heiraten</div>
+    <h1>
+      <em>Julia</em>
+      <span class="hero-ampersand">&amp;</span>
+      <em>Maxi</em>
+    </h1>
+    <div class="hero-date">12. Juli 2025 &nbsp;·&nbsp; Schloss Mirabell, Salzburg</div>
+    <div class="hero-photo">
+      <div class="photo-placeholder">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span>Euer Foto hier</span>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="section-inner">
+    <div class="section-tag reveal">Unsere Geschichte</div>
+    <h2 class="reveal">Wie alles <em>begann</em></h2>
+    <div class="divider reveal"></div>
+    <div class="story-grid reveal">
+      <div class="story-photo">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span>Foto Platzhalter</span>
+      </div>
+      <div class="story-text">
+        <p>Es war ein gewöhnlicher Dienstagabend im Herbst 2018, als Julia und Maxi sich das erste Mal in einem kleinen Weinlokal in der Altstadt begegneten. Ein Lächeln, ein zufälliger Blick – und alles änderte sich.</p>
+        <p>Aus dem ersten Date wurde ein zweites, dann ein drittes. Bald teilten sie Frühstücke, Reisen, Träume und Wohnzimmer. Und an einem goldenen Herbstmorgen im Oktober 2024 kniete Maxi im Salzburger Mirabellgarten nieder.</p>
+        <p>Julia sagte ja. Natürlich.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ablauf">
+  <div class="section-inner">
+    <div class="section-tag reveal">Der große Tag</div>
+    <h2 class="reveal">Unser <em>Ablauf</em></h2>
+    <div class="divider reveal"></div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+        <div class="tl-body">
+          <h3>Empfang der Gäste</h3>
+          <p>Sektempfang im Garten der Location · Begrüßung & erste Fotos</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+        <div class="tl-body">
+          <h3>Standesamtliche Trauung</h3>
+          <p>Zeremonie im großen Festsaal · Dauer ca. 45 Minuten</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+        <div class="tl-body">
+          <h3>Fotoshooting</h3>
+          <p>Gemeinsame Fotos im Garten · Freizeit für alle Gäste</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+        <div class="tl-body">
+          <h3>Festliches Dinner</h3>
+          <p>5-Gänge Menü · Tischreden & Überraschungen</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">20:00</div>
+        <div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+        <div class="tl-body">
+          <h3>Erster Tanz & Party</h3>
+          <p>Live-Band, Tanzfläche & Mitternachtssnack · Bis in die frühen Morgenstunden</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="location">
+  <div class="section-inner">
+    <div class="section-tag reveal">Wo wir feiern</div>
+    <h2 class="reveal" style="color:var(--cream);">Die <em>Location</em></h2>
+    <p class="lead reveal">Wir freuen uns, unseren großen Tag an einem der schönsten Orte Salzburgs feiern zu dürfen.</p>
+    <div class="divider reveal" style="background:var(--gold);"></div>
+    <div class="location-grid reveal">
+      <div class="loc-card">
+        <h3>📍 Veranstaltungsort</h3>
+        <p>
+          <strong style="color:var(--cream);">Schloss Mirabell</strong><br>
+          Mirabellplatz 4<br>
+          5020 Salzburg<br><br>
+          Parkplätze sind direkt vor Ort vorhanden. Für Gäste ohne Auto organisieren wir einen Shuttle-Service vom Hauptbahnhof.
+        </p>
+      </div>
+      <div class="loc-card">
+        <h3>🏨 Unterkünfte</h3>
+        <p>
+          Wir haben für euch ein Zimmerkontingent im nahegelegenen<br>
+          <strong style="color:var(--cream);">Hotel Sacher Salzburg</strong><br>
+          reserviert. Bitte bucht bis zum <strong style="color:var(--cream);">1. Juni 2025</strong> unter dem Stichwort <em>„Julia & Maxi"</em>.
+        </p>
+      </div>
+    </div>
+    <div class="map-placeholder reveal">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+      </svg>
+      <span>Karten-Platzhalter · Hier Google Maps einbetten</span>
+    </div>
+  </div>
+</section>
+
+<section id="fotos">
+  <div class="section-inner">
+    <div class="section-tag reveal">Momente</div>
+    <h2 class="reveal">Unsere <em>Erinnerungen</em></h2>
+    <div class="photo-mosaic reveal">
+      <div class="mosaic-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span>Foto 1</span>
+      </div>
+      <div class="mosaic-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span>Foto 2</span>
+      </div>
+      <div class="mosaic-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span>Foto 3</span>
+      </div>
+      <div class="mosaic-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span>Foto 4</span>
+      </div>
+      <div class="mosaic-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span>Foto 5</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rsvp">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-tag reveal">Bitte bis 1. Juni antworten</div>
+    <h2 class="reveal">Kommt ihr zur <em>Feier</em>?</h2>
+    <p class="lead reveal" style="margin:0 auto;">Wir würden uns riesig über eure Zusage freuen! Bitte gebt uns kurz Bescheid, damit wir besser planen können.</p>
+  </div>
+  <div class="rsvp-card reveal">
+    <form id="rsvpForm">
+      <div class="form-group">
+        <label>Euer Name / Eure Namen</label>
+        <input type="text" placeholder="z.B. Anna & Thomas Müller" required />
+      </div>
+      <div class="form-group">
+        <label>E-Mail-Adresse</label>
+        <input type="email" placeholder="eure@email.de" required />
+      </div>
+      <div class="form-group">
+        <label>Kommt ihr?</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="coming" value="ja" required />
+            <span class="radio-btn">🥂 Ja, wir kommen!</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="coming" value="nein" />
+            <span class="radio-btn">😢 Leider nein</span>
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Anzahl der Personen</label>
+        <input type="number" min="1" max="10" placeholder="2" />
+      </div>
+      <div class="form-group">
+        <label>Essenswünsche / Allergien</label>
+        <select>
+          <option value="">Keine besonderen Wünsche</option>
+          <option>Vegetarisch</option>
+          <option>Vegan</option>
+          <option>Glutenfrei</option>
+          <option>Laktosefrei</option>
+          <option>Sonstiges (bitte in Nachricht angeben)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Nachricht an das Brautpaar (optional)</label>
+        <textarea placeholder="Ein paar liebe Worte, Liedwünsche ..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Zusage absenden</button>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <div class="check">💌</div>
+      <h3>Vielen herzlichen Dank!</h3>
+      <p>Wir haben eure Antwort erhalten und freuen uns sehr. Bis bald!</p>
+    </div>
+  </div>
+</section>
+
+<section id="dresscode">
+  <div class="section-inner">
+    <div class="section-tag reveal">Style-Guide</div>
+    <h2 class="reveal">Der <em>Dresscode</em></h2>
+    <p class="lead reveal">Wir wünschen uns eine festliche Atmosphäre in warmen Erdtönen und zarten Pastellfarben.</p>
+    <div class="divider reveal"></div>
+    <div class="dc-grid reveal">
+      <div class="dc-card">
+        <div class="dc-swatch" style="background:#D4A99A;"></div>
+        <h3>Altrosa & Blush</h3>
+        <p>Zarte Rosatöne, pudrige Farben, romantische Stoffe wie Seiden-Chiffon oder Leinen.</p>
+      </div>
+      <div class="dc-card">
+        <div class="dc-swatch" style="background:#C9A96E;"></div>
+        <h3>Champagner & Gold</h3>
+        <p>Warme Goldtöne, Crème und Champagner. Perfekt für Abendkleider und Anzüge.</p>
+      </div>
+      <div class="dc-card">
+        <div class="dc-swatch" style="background:#6B4F47;"></div>
+        <h3>Terrakotta & Braun</h3>
+        <p>Tiefe Erdtöne und Terrakotta als Akzent. Bitte kein Weiß oder Reines Schwarz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-names">Julia & Maxi</div>
+  <p>12. Juli 2025 &nbsp;·&nbsp; Schloss Mirabell, Salzburg</p>
+  <p style="margin-top:.5rem;">Wir freuen uns auf euch 🤍</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => obs.observe(r));
+
+  document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
