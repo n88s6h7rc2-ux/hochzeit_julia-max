@@ -585,5 +585,44 @@ Halte die Antwort knapp und herzlich – maximal 5 Sätze.`
   btn.textContent = 'Erneut analysieren';
 }
 </script>
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzhKfb8B9UzOlgiN3ltJk0d034PZ9yxKsWUSQsv1CrG5NVlcU-KRZ5n13e5Y6n0FJwv/exec";
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("rsvpForm");
+  if (!form) return;
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const data = {
+      name: form.name?.value || '',
+      email: form.email?.value || '',
+      attending: form.attending?.value || '',
+      guests: form.guests?.value || '',
+      message: form.message?.value || ''
+    };
+
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        form.style.display = "none";
+        const ok = document.querySelector('.form-success');
+        if (ok) ok.style.display = 'block';
+      } else {
+        alert("Fehler beim Senden");
+      }
+    } catch (err) {
+      alert("Verbindung fehlgeschlagen");
+    }
+  });
+});
+</script>
+
 </body>
 </html>
