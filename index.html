@@ -467,7 +467,7 @@ document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
 
 // ── RSVP ─────────────────────────────────────────────────────
 // 👉 GOOGLE SHEETS: Ersetze die URL unten mit deiner Google Apps Script Web App URL
-const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbz1NBsg-momAkn7clVe14D12njMtfUYOURJnq-RQXJ8EukGBtlg6tLrx2P0YI8Ho5Be/exec';
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxdVeZQTekoaoRypRdlUI72o_zRMcjYnk985wtc0iN0eny6sSXf-BzKKWJBC-GDT8vQ/exec';
 let responses = JSON.parse(localStorage.getItem('hochzeit_v3')||'[]');
 
 document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
@@ -492,7 +492,7 @@ document.getElementById('rsvpForm').addEventListener('submit', async function(e)
   responses.push(entry);
   localStorage.setItem('hochzeit_v3', JSON.stringify(responses));
   // Try Google Sheets
-  if(SHEETS_URL !== 'https://script.google.com/macros/s/AKfycbzULIv4ivGf3Ut_Xrkj8aZhnQYCWzIgEQjIBPtTdg3XOaztP3iTLlcfbO-b5OmtgPMD/exec') {
+  if(SHEETS_URL !== 'https://script.google.com/macros/s/AKfycbxdVeZQTekoaoRypRdlUI72o_zRMcjYnk985wtc0iN0eny6sSXf-BzKKWJBC-GDT8vQ/exec') {
     try {
       await fetch(SHEETS_URL, {method:'POST', body:JSON.stringify(entry)});
     } catch(err) { console.warn('Sheets upload failed:', err); }
